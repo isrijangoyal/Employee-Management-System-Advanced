@@ -1,6 +1,7 @@
 package com.srijan.employee_management.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "employees")
@@ -10,16 +11,20 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment ID
     private Long id;
 
+    @NotBlank(message = "First name is required")
     @Column(nullable = false)
     private String firstName;
 
     private String lastName;
 
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email should be valid.")
     @Column(unique = true)
     private String email;
 
     private String role;
 
+    @Positive(message = "Salary should be positive")
     private Double salary;
 
     private String department;

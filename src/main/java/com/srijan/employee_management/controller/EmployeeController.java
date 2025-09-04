@@ -22,7 +22,7 @@ public class EmployeeController {
 
     // Add an employee
     @PostMapping
-    public ResponseEntity<Employee> create(@RequestBody Employee e) {
+    public ResponseEntity<Employee> create(@Valid @RequestBody Employee e) {
         return ResponseEntity.ok(service.create(e));
     }
 
@@ -46,7 +46,7 @@ public class EmployeeController {
 
     // Update
     @PutMapping("/{id}")
-    public ResponseEntity<Employee> update(@PathVariable Long id, @RequestBody Employee e) {
+    public ResponseEntity<Employee> update(@Valid @PathVariable Long id, @RequestBody Employee e) {
         return ResponseEntity.ok(service.update(id, e));
     }
 

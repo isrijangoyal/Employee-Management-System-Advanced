@@ -3,6 +3,7 @@ package com.srijan.employee_management.service;
 import com.srijan.employee_management.entity.Employee;
 import com.srijan.employee_management.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
+import com.srijan.employee_management.exception.EmployeeNotFoundException;
 
 import java.util.List;
 import java.util.Map;
@@ -29,7 +30,7 @@ public class EmployeeService {
     }
 
     public Employee getById(Long id) {
-        return repo.findById(id).orElseThrow(() -> new RuntimeException("Employee not found: " + id));
+        return repo.findById(id).orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + id));
     }
 
     public Employee update(Long id, Employee updated) {
